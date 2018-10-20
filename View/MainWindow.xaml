@@ -46,6 +46,31 @@
             </Button>
         </Grid>
 
+        <Grid Grid.Row="1"
+              Margin="0,10,0,0"
+              Visibility="{Binding KeyBoardVisibility, Mode=OneWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Command="{Binding Pred1Command}">
+                <Viewbox>
+                    <TextBlock Text="{Binding PredictedWord1, Mode=OneWay}" Padding="10,0"/>
+                </Viewbox>
+            </Button>
+            <Button Grid.Column="1" Command="{Binding Pred2Command}">
+                <Viewbox>
+                    <TextBlock Text="{Binding PredictedWord2, Mode=OneWay}" Padding="10,0"/>
+                </Viewbox>
+            </Button>
+            <Button Grid.Column="2" Command="{Binding Pred3Command}">
+                <Viewbox>
+                    <TextBlock Text="{Binding PredictedWord3, Mode=OneWay}" Padding="10,0"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+        
         <Viewbox Grid.Row="2"
                  Visibility="{Binding KeyBoardVisibility, Mode=OneWay}">
             <local:PromptControl Text="{Binding DisplayedText, Mode=TwoWay}"/>
