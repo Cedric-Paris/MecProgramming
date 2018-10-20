@@ -9,13 +9,46 @@
              Width="1600">
     <Grid>
         <Grid.Resources>
-            <Style TargetType="Button">
+            <Style TargetType="{x:Type Button}">
                 <Setter Property="FontSize" Value="68"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="Margin" Value="5"/>
                 <Setter Property="Width" Value="120"/>
                 <Setter Property="Height" Value="120"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="#FF757575"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Padding="15"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#FF76B6F8"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="#FF646464"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
+            <!--<Style TargetType="Button">
+                <Setter Property="FontSize" Value="68"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Width" Value="120"/>
+                <Setter Property="Height" Value="120"/>
+            </Style>-->
         </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

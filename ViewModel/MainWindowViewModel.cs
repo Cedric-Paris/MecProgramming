@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using MecProgramming.Tools;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace MecProgramming.ViewModel
 {
@@ -156,7 +155,7 @@ namespace MecProgramming.ViewModel
                 else
                 {
                     bool flag = false;
-                    for(int i = DisplayedText.Length; i >= 0; i--)
+                    for(int i = DisplayedText.Length - 1; i >= 0; i--)
                     {
                         if(DisplayedText[i] == ' ')
                         {
