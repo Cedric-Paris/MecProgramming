@@ -11,8 +11,10 @@ namespace MecProgramming
     {
         private void Start(object sender, StartupEventArgs e)
         {
+            var mailSender = new MailSender();
+
             var wnd = new MainWindow();
-            var dataContext = new MainWindowViewModel(new SpeechSynthesizerManager());
+            var dataContext = new MainWindowViewModel(new SpeechSynthesizerManager(), mailSender);
             wnd.DataContext = dataContext;
             wnd.Show();
         }

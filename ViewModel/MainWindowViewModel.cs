@@ -10,6 +10,7 @@ namespace MecProgramming.ViewModel
         private static string OhYeahString = "Oh Yeah!";
 
         private SpeechSynthesizerManager synthesizerManager;
+        private MailSender mailSender;
 
         private string displayedText = "";
         private bool isKeyBoardFeatureEnabled = true;
@@ -62,19 +63,27 @@ namespace MecProgramming.ViewModel
 
         public ICommand SpeakCommand { get { return new ButtonCommand(SpeakDisplayedText); } }
 
+        public ICommand SendEmailCommand { get { return new ButtonCommand(SendDisplayedTextAsEmail); } }
+
         public ICommand CommonCommand { get { return new ButtonCommand(ToggleCommonFeature); } }
 
         public ICommand OhYeahCommand { get { return new ButtonCommand(SpeakOhYeah); } }
 
-        public MainWindowViewModel(SpeechSynthesizerManager synthesizerManager)
+        public MainWindowViewModel(SpeechSynthesizerManager synthesizerManager, MailSender mailSender)
         {
             this.synthesizerManager = synthesizerManager;
+            this.mailSender = mailSender;
             CommonPhrasesViewModel = new CommonPhrasesViewModel(this.synthesizerManager);
         }
 
         public void SpeakDisplayedText()
         {
             Task.Run(() => synthesizerManager.Speak(DisplayedText));
+        }
+
+        public void SendDisplayedTextAsEmail()
+        {
+            mailSender.SendMail(DisplayedText);
         }
 
         public void ToggleCommonFeature()
