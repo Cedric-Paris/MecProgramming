@@ -134,7 +134,11 @@ namespace MecProgramming.Tools
              */
             if (tokenDelimeters.Contains(lastChar))
             {
-                Dictionary<string, int> data = numberWordsContext[tokens.Last()];
+                Dictionary<string, int> data = new Dictionary<string, int>();
+                
+                if(numberWordsContext.ContainsKey(tokens.Last()))
+                    data = numberWordsContext[tokens.Last()];
+                
 
                 // We make a query in the frequency of word in the current context
                 predicition = (from x in data
@@ -148,7 +152,11 @@ namespace MecProgramming.Tools
              */
             else
             {
-                Dictionary<string, int> data = numberWordsContext[tokens[tokens.Count - 2]];
+                Dictionary<string, int> data = new Dictionary<string, int>();
+
+                if(numberWordsContext.ContainsKey(tokens[tokens.Count - 2]))
+                    data = numberWordsContext[tokens[tokens.Count - 2]];
+
                 string wordToComplete = tokens.Last();
 
                 // We make a query in the frequency of word in the current context

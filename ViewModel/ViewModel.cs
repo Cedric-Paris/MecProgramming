@@ -3,6 +3,10 @@ using System.Runtime.CompilerServices;
 
 namespace MecProgramming.ViewModel
 {
+    /// <summary>
+    /// Abstract class for the view model we are using in the GUI
+    /// We are using the Viewmodel design pattern
+    /// </summary>
     public abstract class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
