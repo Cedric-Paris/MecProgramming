@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MecProgramming.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
+        Background="#FF757575"
         WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,40 +15,42 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
-              Visibility="{Binding KeyBoardVisibility, Mode=OneWay}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Command="{Binding ClearCommand}">
-                <Viewbox>
-                    <TextBlock Text="Clear" Padding="10,0"/>
-                </Viewbox>
-            </Button>
-            <Border Grid.Column="1" Padding="10,0">
-                <Viewbox HorizontalAlignment="Left">
-                    <TextBlock FontSize="35" TextWrapping="Wrap" Text="{Binding DisplayedText, Mode=OneWay}"/>
-                </Viewbox>
-            </Border>
-            <Button Grid.Column="2"
+        <Border Grid.Row="0"
+                Padding="0,0,0,10"
+              Visibility="{Binding KeyBoardVisibility, Mode=OneWay}"
+              Background="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Command="{Binding ClearCommand}">
+                    <Viewbox>
+                        <TextBlock Text="Clear" Padding="10,0"/>
+                    </Viewbox>
+                </Button>
+                <Border Grid.Column="1" Padding="10,0">
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock FontSize="35" TextWrapping="Wrap" Text="{Binding DisplayedText, Mode=OneWay}"/>
+                    </Viewbox>
+                </Border>
+                <Button Grid.Column="2"
                     Margin="0,0,10,0"
                     Command="{Binding SendEmailCommand}">
-                <Viewbox>
-                    <TextBlock Text="Send" Padding="10,0"/>
-                </Viewbox>
-            </Button>
-            <Button Grid.Column="3" Command="{Binding SpeakCommand}">
-                <Viewbox>
-                    <TextBlock Text="Speak" Padding="10,0"/>
-                </Viewbox>
-            </Button>
-        </Grid>
-
+                    <Viewbox>
+                        <TextBlock Text="Send" Padding="10,0"/>
+                    </Viewbox>
+                </Button>
+                <Button Grid.Column="3" Command="{Binding SpeakCommand}">
+                    <Viewbox>
+                        <TextBlock Text="Speak" Padding="10,0"/>
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Border>
         <Grid Grid.Row="1"
-              Margin="0,10,0,0"
               Visibility="{Binding KeyBoardVisibility, Mode=OneWay}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
