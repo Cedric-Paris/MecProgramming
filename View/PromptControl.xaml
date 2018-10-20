@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="MecProgramming.View.PromptControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MecProgramming.View"
+             mc:Ignorable="d"
+             Height="700"
+             Width="1600">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="68"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Width" Value="120"/>
+                <Setter Property="Height" Value="120"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="1" Click="Button_Click"/>
+                <Button Content="2" Click="Button_Click"/>
+                <Button Content="3" Click="Button_Click"/>
+                <Button Content="4" Click="Button_Click"/>
+                <Button Content="5" Click="Button_Click"/>
+                <Button Content="6" Click="Button_Click"/>
+                <Button Content="7" Click="Button_Click"/>
+                <Button Content="8" Click="Button_Click"/>
+                <Button Content="9" Click="Button_Click"/>
+                <Button Content="0" Click="Button_Click"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Q" Click="Button_Click"/>
+                <Button Content="W" Click="Button_Click"/>
+                <Button Content="E" Click="Button_Click"/>
+                <Button Content="R" Click="Button_Click"/>
+                <Button Content="T" Click="Button_Click"/>
+                <Button Content="Y" Click="Button_Click"/>
+                <Button Content="U" Click="Button_Click"/>
+                <Button Content="I" Click="Button_Click"/>
+                <Button Content="O" Click="Button_Click"/>
+                <Button Content="P" Click="Button_Click"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="A" Click="Button_Click"/>
+                <Button Content="S" Click="Button_Click"/>
+                <Button Content="D" Click="Button_Click"/>
+                <Button Content="F" Click="Button_Click"/>
+                <Button Content="G" Click="Button_Click"/>
+                <Button Content="H" Click="Button_Click"/>
+                <Button Content="J" Click="Button_Click"/>
+                <Button Content="K" Click="Button_Click"/>
+                <Button Content="L" Click="Button_Click"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="3" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Z" Click="Button_Click"/>
+                <Button Content="X" Click="Button_Click"/>
+                <Button Content="C" Click="Button_Click"/>
+                <Button Content="V" Click="Button_Click"/>
+                <Button Content="B" Click="Button_Click"/>
+                <Button Content="N" Click="Button_Click"/>
+                <Button Content="M" Click="Button_Click"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="4" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="." Click="Button_Click"/>
+                <Button Content="," Click="Button_Click"/>
+                <Button Width="800" Height="120" Content="Space" Click="SpaceButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="FontSize" Value="68"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Width="260" Height="120" Content="BACK" Click="DelButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="FontSize" Value="68"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
+</Grid>
+</UserControl>

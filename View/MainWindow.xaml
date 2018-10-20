@@ -1,0 +1,72 @@
+﻿<Window x:Class="MecProgramming.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MecProgramming.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Command="{Binding ClearCommand}">
+                <Viewbox>
+                    <TextBlock Text="Clear" Padding="10,0"/>
+                </Viewbox>
+            </Button>
+            <Border Grid.Column="1" Padding="10,0">
+                <Viewbox HorizontalAlignment="Left">
+                    <TextBlock FontSize="35" TextWrapping="Wrap" Text="{Binding DisplayedText, Mode=OneWay}"/>
+                </Viewbox>
+            </Border>
+            <Button Grid.Column="2" Command="{Binding SpeakCommand}">
+                <Viewbox>
+                    <TextBlock Text="Speak" Padding="10,0"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <Viewbox Grid.Row="2">
+            <local:PromptControl Text="{Binding DisplayedText, Mode=TwoWay}"/>
+        </Viewbox>
+        <Grid Grid.Row="3" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0">
+                <Viewbox>
+                    <TextBlock Text="Help"/>
+                </Viewbox>
+            </Button>
+            <Button Grid.Column="1">
+                <Viewbox>
+                    <TextBlock Text="Emergency"/>
+                </Viewbox>
+            </Button>
+            <Button Grid.Column="2">
+                <Viewbox>
+                    <TextBlock Text="Common"/>
+                </Viewbox>
+            </Button>
+            <Button Grid.Column="3" Command="{Binding OhYeahCommand}">
+                <Viewbox>
+                    <TextBlock Text="Oh Yeah"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+    </Grid>
+</Window>

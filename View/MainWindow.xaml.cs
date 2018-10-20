@@ -28,18 +28,18 @@ namespace MecProgramming
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using (SpeechSynthesizer synth = new SpeechSynthesizer())  
-      {  
+            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+            {
 
-        // Configure the audio output.   
-        synth.SetOutputToDefaultAudioDevice();  
+                // Configure the audio output.   
+                synth.SetOutputToDefaultAudioDevice();
 
-        // Create a prompt from a string.  
-        Prompt color = new Prompt("What is your favorite color?");  
+                // Create a prompt from a string.  
+                Prompt color = new Prompt("What is your favorite color?");
 
-        // Speak the contents of the prompt synchronously.  
-        synth.Speak(color);  
-      }  
+                // Speak the contents of the prompt synchronously.  
+                synth.Speak(color);
+            }
         }
     }
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using MecProgramming.View;
+using MecProgramming.ViewModel;
 
 namespace MecProgramming
 {
@@ -13,5 +9,12 @@ namespace MecProgramming
     /// </summary>
     public partial class App : Application
     {
+        private void Start(object sender, StartupEventArgs e)
+        {
+            var wnd = new MainWindow();
+            var dataContext = new MainWindowViewModel();
+            wnd.DataContext = dataContext;
+            wnd.Show();
+        }
     }
 }
