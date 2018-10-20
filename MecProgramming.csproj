@@ -56,12 +56,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tools\SpeechSynthesizerManager.cs" />
     <Compile Include="ViewModel\ButtonCommand.cs" />
+    <Compile Include="ViewModel\CommonPhrasesViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="View\CommonPhrases.xaml.cs">
+      <DependentUpon>CommonPhrases.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PromptControl.xaml.cs">
       <DependentUpon>PromptControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\CommonPhrases.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -4,9 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MecProgramming.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d"
+             Width="700"
+             Height="300">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="FontSize" Value="25"/>
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -19,14 +27,23 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" Content="Yes"/>
-        <Button Grid.Row="0" Grid.Column="1" Content="No"/>
-        <Button Grid.Row="0" Grid.Column="2" Content="Okay"/>
-        <Button Grid.Row="0" Grid.Column="3" Content="Maybe"/>
+        <Button Grid.Row="0" Grid.Column="0" Content="Yes" Command="{Binding YesCommand}"/>
+        <Button Grid.Row="0" Grid.Column="1" Content="No" Command="{Binding NoCommand}"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="Okay" Command="{Binding OkayCommand}"/>
+        <Button Grid.Row="0" Grid.Column="3" Content="Maybe" Command="{Binding MaybeCommand}"/>
 
-        <Button Grid.Row="1" Grid.Column="0" Content="Yes"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="No"/>
-        <Button Grid.Row="1" Grid.Column="2" Content="Okay"/>
-        <Button Grid.Row="1" Grid.Column="3" Content="Maybe"/>
+        <Button Grid.Row="1" Grid.Column="0" Content="I" Command="{Binding ICommand}"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="Happy" Command="{Binding HappyCommand}"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="Sad" Command="{Binding SadCommand}"/>
+        <Button Grid.Row="1" Grid.Column="3" Content="Don't" Command="{Binding DontCommand}"/>
+
+        <Button Grid.Row="2" Grid.Column="1" Content="Can't" Command="{Binding CantCommand}"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="Know" Command="{Binding KnowCommand}"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="Want" Command="{Binding WantCommand}"/>
+
+        <Button Grid.Row="3" Grid.Column="0" Content="Oh Yeah" Command="{Binding OhYeahCommand}"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="Wow" Command="{Binding WowCommand}"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="Woah" Command="{Binding WoahCommand}"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="Thank you" Command="{Binding ThankCommand}"/>
     </Grid>
 </UserControl>

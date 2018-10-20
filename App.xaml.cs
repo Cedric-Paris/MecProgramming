@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using MecProgramming.View;
+using MecProgramming.Tools;
 using MecProgramming.ViewModel;
 
 namespace MecProgramming
@@ -12,7 +12,7 @@ namespace MecProgramming
         private void Start(object sender, StartupEventArgs e)
         {
             var wnd = new MainWindow();
-            var dataContext = new MainWindowViewModel();
+            var dataContext = new MainWindowViewModel(new SpeechSynthesizerManager());
             wnd.DataContext = dataContext;
             wnd.Show();
         }

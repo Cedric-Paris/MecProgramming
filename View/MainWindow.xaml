@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MecProgramming.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -13,7 +14,8 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Visibility="{Binding KeyBoardVisibility, Mode=OneWay}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10*"/>
@@ -36,9 +38,16 @@
             </Button>
         </Grid>
 
-        <Viewbox Grid.Row="2">
+        <Viewbox Grid.Row="2"
+                 Visibility="{Binding KeyBoardVisibility, Mode=OneWay}">
             <local:PromptControl Text="{Binding DisplayedText, Mode=TwoWay}"/>
         </Viewbox>
+
+        <Viewbox Grid.Row="0" Grid.RowSpan="3"
+                 Visibility="{Binding CommonVisibility, Mode=OneWay}">
+            <local:CommonPhrases DataContext="{Binding CommonPhrasesViewModel, Mode=OneTime}"/>
+        </Viewbox>
+        
         <Grid Grid.Row="3" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -56,9 +65,20 @@
                     <TextBlock Text="Emergency"/>
                 </Viewbox>
             </Button>
-            <Button Grid.Column="2">
+            <Button Grid.Column="2" Command="{Binding CommonCommand}">
                 <Viewbox>
-                    <TextBlock Text="Common"/>
+                    <TextBlock>
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Text" Value="Common"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsCommonFeatureEnabled}" Value="True">
+                                        <Setter Property="Text" Value="Back"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </Viewbox>
             </Button>
             <Button Grid.Column="3" Command="{Binding OhYeahCommand}">

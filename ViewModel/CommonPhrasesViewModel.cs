@@ -1,0 +1,52 @@
+﻿using MecProgramming.Tools;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+namespace MecProgramming.ViewModel
+{
+    public class CommonPhrasesViewModel : ViewModel
+    {
+        private static string YesString = "Yes";
+        private static string NoString = "No";
+        private static string OkayString = "Okay";
+        private static string MaybeString = "Maybe";
+        private static string IString = "I";
+        private static string HappyString = "Happy";
+        private static string SadString = "Sad";
+        private static string DontString = "Don't";
+        private static string CantString = "Can't";
+        private static string KnowString = "Know";
+        private static string WantString = "Want";
+        private static string OhYeahString = "Oh Yeah";
+        private static string WowString = "Wow";
+        private static string WoahString = "Woah";
+        private static string ThankString = "Thank you";
+
+        private SpeechSynthesizerManager synthesizerManager;
+
+        public ICommand YesCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(YesString)); } }
+        public ICommand NoCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(NoString)); } }
+        public ICommand OkayCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(OkayString)); } }
+        public ICommand MaybeCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(MaybeString)); } }
+        public ICommand ICommand { get { return new ButtonCommand(() => synthesizerManager.Speak(IString)); } }
+        public ICommand HappyCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(HappyString)); } }
+        public ICommand SadCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(SadString)); } }
+        public ICommand DontCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(DontString)); } }
+        public ICommand CantCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(CantString)); } }
+        public ICommand KnowCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(KnowString)); } }
+        public ICommand WantCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(WantString)); } }
+        public ICommand OhYeahCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(OhYeahString)); } }
+        public ICommand WowCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(WowString)); } }
+        public ICommand WoahCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(WoahString)); } }
+        public ICommand ThankCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(ThankString)); } }
+
+        public CommonPhrasesViewModel(SpeechSynthesizerManager synthesizerManager)
+        {
+            this.synthesizerManager = synthesizerManager;
+        }
+    }
+}

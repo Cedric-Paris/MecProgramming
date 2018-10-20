@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows;
 using System.Windows.Input;
+using MecProgramming.Tools;
+using System.Threading.Tasks;
 
 namespace MecProgramming.ViewModel
 {
     public class MainWindowViewModel : ViewModel
     {
         private static string OhYeahString = "Oh Yeah!";
-        private SpeechSynthesizer synthesizer;
+
+        private SpeechSynthesizerManager synthesizerManager;
 
         private string displayedText = "";
+        private bool isKeyBoardFeatureEnabled = true;
+        private bool isCommonFeatureEnabled = false;
 
         public string DisplayedText
         {
@@ -25,37 +25,75 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        public CommonPhrasesViewModel CommonPhrasesViewModel { get; set;  }
+
+        private bool IsKeyBoardFeatureEnabled
+        {
+            get { return isKeyBoardFeatureEnabled; }
+            set
+            {
+                isKeyBoardFeatureEnabled = value;
+                OnPropertyChanged("KeyBoardVisibility");
+            }
+        }
+
+        public bool IsCommonFeatureEnabled
+        {
+            get { return isCommonFeatureEnabled; }
+            private set
+            {
+                isCommonFeatureEnabled = value;
+                OnPropertyChanged("IsCommonFeatureEnabled");
+                OnPropertyChanged("CommonVisibility");
+            }
+        }
+
+        public Visibility KeyBoardVisibility
+        {
+            get { return IsKeyBoardFeatureEnabled ? Visibility.Visible : Visibility.Collapsed; }
+        }
+
+        public Visibility CommonVisibility
+        {
+            get { return IsCommonFeatureEnabled ? Visibility.Visible : Visibility.Collapsed; }
+        }
+
         public ICommand ClearCommand { get { return new ButtonCommand(()=> { DisplayedText = string.Empty; }); } }
 
         public ICommand SpeakCommand { get { return new ButtonCommand(SpeakDisplayedText); } }
 
+        public ICommand CommonCommand { get { return new ButtonCommand(ToggleCommonFeature); } }
+
         public ICommand OhYeahCommand { get { return new ButtonCommand(SpeakOhYeah); } }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(SpeechSynthesizerManager synthesizerManager)
         {
-            synthesizer = new SpeechSynthesizer();
-            synthesizer.SetOutputToDefaultAudioDevice();
+            this.synthesizerManager = synthesizerManager;
+            CommonPhrasesViewModel = new CommonPhrasesViewModel(this.synthesizerManager);
         }
 
         public void SpeakDisplayedText()
         {
-            if(!string.IsNullOrWhiteSpace(DisplayedText))
+            Task.Run(() => synthesizerManager.Speak(DisplayedText));
+        }
+
+        public void ToggleCommonFeature()
+        {
+            if(IsCommonFeatureEnabled)
             {
-                lock (synthesizer)
-                {
-                    Prompt speech = new Prompt(DisplayedText.Trim());
-                    synthesizer.Speak(speech);
-                }
+                IsCommonFeatureEnabled = false;
+                IsKeyBoardFeatureEnabled = true;
+            }
+            else
+            {
+                IsCommonFeatureEnabled = true;
+                IsKeyBoardFeatureEnabled = false;
             }
         }
 
         public void SpeakOhYeah()
         {
-            lock (synthesizer)
-            {
-                Prompt speech = new Prompt(OhYeahString);
-                synthesizer.Speak(speech);
-            }
+            Task.Run(() => synthesizerManager.Speak(OhYeahString));
         }
     }
 }
