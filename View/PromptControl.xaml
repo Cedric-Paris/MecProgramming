@@ -144,7 +144,10 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Width="260" Height="120" Content="BACK" Click="DelButton_Click">
+                <Button Width="260" Height="120" Click="DelButton_Click">
+                    <Viewbox>
+                        <TextBlock Text="←"/>
+                    </Viewbox>
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="FontSize" Value="68"/>
