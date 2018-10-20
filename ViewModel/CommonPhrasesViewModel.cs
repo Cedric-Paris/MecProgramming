@@ -1,15 +1,14 @@
 ﻿using MecProgramming.Tools;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MecProgramming.ViewModel
 {
     public class CommonPhrasesViewModel : ViewModel
     {
+        /// <summary>
+        /// List of common words that can be used 
+        /// Those words will have shortcuts to be said
+        /// </summary>
         private static string YesString = "Yes";
         private static string NoString = "No";
         private static string OkayString = "Okay";
@@ -26,8 +25,14 @@ namespace MecProgramming.ViewModel
         private static string WoahString = "Woah";
         private static string ThankString = "Thank you";
 
+        /// <summary>
+        /// Speech synthesizer of Microsoft that can convert text to voice
+        /// </summary>
         private SpeechSynthesizerManager synthesizerManager;
 
+        /// <summary>
+        /// Map the commun words to their shorcuts buttons
+        /// </summary>
         public ICommand YesCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(YesString)); } }
         public ICommand NoCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(NoString)); } }
         public ICommand OkayCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(OkayString)); } }
@@ -44,6 +49,10 @@ namespace MecProgramming.ViewModel
         public ICommand WoahCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(WoahString)); } }
         public ICommand ThankCommand { get { return new ButtonCommand(() => synthesizerManager.Speak(ThankString)); } }
 
+        /// <summary>
+        /// Allow the voice to be used in the view
+        /// </summary>
+        /// <param name="synthesizerManager">Speech synthesizer of Microsoft that can convert text to voice</param>
         public CommonPhrasesViewModel(SpeechSynthesizerManager synthesizerManager)
         {
             this.synthesizerManager = synthesizerManager;
