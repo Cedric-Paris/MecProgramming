@@ -7,12 +7,29 @@ namespace MecProgramming.ViewModel
 {
     public class MainWindowViewModel : ViewModel
     {
+        /// <summary>
+        /// String storing "oh yeah" a really used sentence
+        /// </summary>
         private static string OhYeahString = "Oh Yeah!";
 
+        /// <summary>
+        /// Speech synthesizer of Microsoft to convert text to speech 
+        /// </summary>
         private SpeechSynthesizerManager synthesizerManager;
+
+        /// <summary>
+        /// Our custom class to send mails
+        /// </summary>
         private MailSender mailSender;
+
+        /// <summary>
+        /// Our custom class for autocompletion of words
+        /// </summary>
         private Autocomplete autocomplete;
 
+        /// <summary>
+        /// Text displayed at the beginning
+        /// </summary>
         private string displayedText = "";
         private bool isKeyBoardFeatureEnabled = true;
         private bool isCommonFeatureEnabled = false;
@@ -20,6 +37,9 @@ namespace MecProgramming.ViewModel
         private string predictedWord2 = "";
         private string predictedWord3 = "";
 
+        /// <summary>
+        /// Display the text in the correct location
+        /// </summary>
         public string DisplayedText
         {
             get { return displayedText; }
@@ -31,8 +51,14 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        /// <summary>
+        /// Accessors for the common phrases
+        /// </summary>
         public CommonPhrasesViewModel CommonPhrasesViewModel { get; set;  }
 
+        /// <summary>
+        /// Accessors for the keyboards features
+        /// </summary>
         private bool IsKeyBoardFeatureEnabled
         {
             get { return isKeyBoardFeatureEnabled; }
@@ -43,6 +69,9 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        /// <summary>
+        /// Accessors for the commun features
+        /// </summary>
         public bool IsCommonFeatureEnabled
         {
             get { return isCommonFeatureEnabled; }
@@ -54,6 +83,9 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        /// <summary>
+        /// Accessors for the first predicted word
+        /// </summary>
         public string PredictedWord1
         {
             get { return predictedWord1; }
@@ -64,6 +96,9 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        /// <summary>
+        /// Accessors for the second predicted word
+        /// </summary>
         public string PredictedWord2
         {
             get { return predictedWord2; }
@@ -74,6 +109,9 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        /// <summary>
+        /// Accessors for the third predicted word
+        /// </summary>
         public string PredictedWord3
         {
             get { return predictedWord3; }
@@ -84,16 +122,25 @@ namespace MecProgramming.ViewModel
             }
         }
 
+        /// <summary>
+        /// Accessors for the keyboard visibiily
+        /// </summary>
         public Visibility KeyBoardVisibility
         {
             get { return IsKeyBoardFeatureEnabled ? Visibility.Visible : Visibility.Collapsed; }
         }
 
+        /// <summary>
+        /// Accessors for the common visibiily
+        /// </summary>
         public Visibility CommonVisibility
         {
             get { return IsCommonFeatureEnabled ? Visibility.Visible : Visibility.Collapsed; }
         }
 
+        /// <summary>
+        /// Accessors for the differents command of the GUI
+        /// </summary>
         public ICommand ClearCommand { get { return new ButtonCommand(()=> { DisplayedText = string.Empty; }); } }
 
         public ICommand SpeakCommand { get { return new ButtonCommand(SpeakDisplayedText); } }
@@ -110,6 +157,11 @@ namespace MecProgramming.ViewModel
 
         public ICommand Pred3Command { get { return new ButtonCommand(() => AutocompliteDisplayedText(predictedWord3)); } }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="synthesizerManager"></param>
+        /// <param name="mailSender"></param>
         public MainWindowViewModel(SpeechSynthesizerManager synthesizerManager, MailSender mailSender)
         {
             this.synthesizerManager = synthesizerManager;
@@ -118,6 +170,9 @@ namespace MecProgramming.ViewModel
             autocomplete = new Autocomplete("proverbs.txt");
         }
 
+        /// <summary>
+        /// Convert the text into voice when we press the button speak
+        /// </summary>
         public void SpeakDisplayedText()
         {
             Task.Run(() => synthesizerManager.Speak(DisplayedText));
